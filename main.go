@@ -80,9 +80,9 @@ func main() {
 			scanner.Scan()
 			responseString := scanner.Text()
 			if m[i] == responseString {
-				fmt.Println("CORRECT")
+				fmt.Println("CORRECT. %s is the character with index %d", responseString, i)
 			} else {
-				fmt.Println("INCORRECT")
+				fmt.Println("WRONG. %s is the character with index %d", m[i], i)
 			}
 		}
 
