@@ -54,28 +54,36 @@ func main() {
 	m[26] = "z"
 
 	promptIToC := "Enter index of %s: "
-	//promptCToI := "Enter character at index %d: \n"
+	promptCToI := "Enter character at index %d: \n"
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for true {
 
 		// seed random generator
 		rand.Seed(time.Now().UTC().UnixNano())
+		i := randInt(1, 26)
+
 		if (randInt(0, 1)) > 0 {
-			i := randInt(1, 26)
+			// echo's character, asks for index
 			fmt.Printf(promptIToC, m[i])
-			scanner.Scan()
+			scanner.Scan() // gets input/index
 			responseString := scanner.Text()
+			// convert string to int
 			responseInt, _ := strconv.ParseInt(responseString, 10, 0)
-			fmt.Println(i)
-			fmt.Println(responseInt)
 			if int(responseInt) == i {
-				fmt.Println("CORRECT")
+				fmt.Printf("CORRECT. %d is the index of %s \n", i, m[i])
 			} else {
-				fmt.Println("WRONG")
+				fmt.Printf("WRONG. %d is the index of %s \n", int(responseInt), m[int(responseInt)])
 			}
 		} else {
-			fmt.Println("below 0")
+			fmt.Printf(promptCToI, i)
+			scanner.Scan()
+			responseString := scanner.Text()
+			if m[i] == responseString {
+				fmt.Println("CORRECT")
+			} else {
+				fmt.Println("INCORRECT")
+			}
 		}
 
 		//time.Sleep(1000 * time.Millisecond)
