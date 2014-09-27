@@ -85,10 +85,6 @@ func main() {
 				fmt.Println("WRONG. %s is the character with index %d", m[i], i)
 			}
 		}
+	}
 
-		//time.Sleep(1000 * time.Millisecond)
-	}
-	for scanner.Scan() {
-		fmt.Println(scanner.Text())
-	}
 }
